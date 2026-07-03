@@ -1,0 +1,149 @@
+[
+  {
+    "sub_agent_id": "SA-01-PILOT-01",
+    "tasks": [
+      {
+        "sa_id": "SA-01-B",
+        "work": "裆能战记系列",
+        "segment": "1子段",
+        "size_kb": 340.9,
+        "draft_file": "SA-01-B_裆能战记系列_草稿.md",
+        "target": "§4.1"
+      },
+      {
+        "sa_id": "SA-01-F-2",
+        "work": "超星战队日常",
+        "segment": "1子段",
+        "size_kb": 93.9,
+        "draft_file": "SA-01-F-2_超星战队日常_草稿.md",
+        "target": "§4.1"
+      }
+    ]
+  },
+  {
+    "sub_agent_id": "SA-01-PILOT-02",
+    "tasks": [
+      {
+        "sa_id": "SA-01-C",
+        "work": "裆能战记系列",
+        "segment": "1子段",
+        "size_kb": 331.8,
+        "draft_file": "SA-01-C_裆能战记系列_草稿.md",
+        "target": "§4.1"
+      },
+      {
+        "sa_id": "SA-01-D-2",
+        "work": "超能战队（kk版）",
+        "segment": "1子段",
+        "size_kb": 95.4,
+        "draft_file": "SA-01-D-2_超能战队（kk版）_草稿.md",
+        "target": "§4.1"
+      }
+    ]
+  },
+  {
+    "sub_agent_id": "SA-01-PILOT-03",
+    "tasks": [
+      {
+        "sa_id": "SA-01-E",
+        "work": "高弹紧身衣战士白曜（子段1/2，第1-14章）",
+        "segment": "1子段",
+        "size_kb": 329.9,
+        "draft_file": "SA-01-E_高弹紧身衣战士白曜_草稿.md",
+        "target": "§4.1"
+      },
+      {
+        "sa_id": "SA-01-A-2",
+        "work": "裆能战记系列（子段6/6，第22-28章）",
+        "segment": "1子段",
+        "size_kb": 143.9,
+        "draft_file": "SA-01-A-2_裆能战记系列（子段6）_草稿.md",
+        "target": "§4.1"
+      }
+    ]
+  },
+  {
+    "sub_agent_id": "SA-01-PILOT-04",
+    "tasks": [
+      {
+        "sa_id": "SA-01-G",
+        "work": "超级战队收集计划",
+        "segment": "1子段",
+        "size_kb": 289.2,
+        "draft_file": "SA-01-G_超级战队收集计划_草稿.md",
+        "target": "§4.1"
+      },
+      {
+        "sa_id": "SA-01-K",
+        "work": "【龙骧战队】二创",
+        "segment": "1子段",
+        "size_kb": 174.9,
+        "draft_file": "SA-01-K_【龙骧战队】二创_草稿.md",
+        "target": "§4.1"
+      }
+    ]
+  },
+  {
+    "sub_agent_id": "SA-01-PILOT-05",
+    "tasks": [
+      {
+        "sa_id": "SA-01-H",
+        "work": "裆能战记系列",
+        "segment": "1子段",
+        "size_kb": 280.6,
+        "draft_file": "SA-01-H_裆能战记系列_草稿.md",
+        "target": "§4.1"
+      },
+      {
+        "sa_id": "SA-01-A-1",
+        "work": "天装战队护星红",
+        "segment": "1子段",
+        "size_kb": 197.4,
+        "draft_file": "SA-01-A-1_天装战队护星红_草稿.md",
+        "target": "§4.1"
+      }
+    ]
+  },
+  {
+    "sub_agent_id": "SA-01-PILOT-06",
+    "tasks": [
+      {
+        "sa_id": "SA-01-I",
+        "work": "裆能战记系列",
+        "segment": "1子段",
+        "size_kb": 266.7,
+        "draft_file": "SA-01-I_裆能战记系列_草稿.md",
+        "target": "§4.1"
+      },
+      {
+        "sa_id": "SA-01-F-1",
+        "work": "高弹紧身衣战士白曜（子段2/2，第15-24章）",
+        "segment": "1子段",
+        "size_kb": 234.0,
+        "draft_file": "SA-01-F-1_高弹紧身衣战士白曜（子段2）_草稿.md",
+        "target": "§4.1"
+      }
+    ]
+  },
+  {
+    "sub_agent_id": "SA-01-PILOT-07",
+    "tasks": [
+      {
+        "sa_id": "SA-01-J",
+        "work": "裆能战记系列",
+        "segment": "1子段",
+        "size_kb": 265.9,
+        "draft_file": "SA-01-J_裆能战记系列_草稿.md",
+        "target": "§4.1"
+      },
+      {
+        "sa_id": "SA-01-D-1",
+        "work": "超级战士",
+        "segment": "1子段",
+        "size_kb": 235.6,
+        "draft_file": "SA-01-D-1_超级战士_草稿.md",
+        "target": "§4.1"
+      }
+    ]
+  }
+]

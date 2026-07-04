@@ -1,117 +1,277 @@
-# 正太纯爱文风整合 - The Implementation Plan (Decomposed and Prioritized Task List)
+# 正太纯爱文风模块 - The Implementation Plan (Decomposed and Prioritized Task List)
 
-## [ ] Task 1: 深度阅读并提取《星辰之下》文风精华
+## [ ] Task 1: 创建模块目录结构并复制原始素材
 - **Priority**: high
 - **Depends On**: None
 - **Description**: 
-  - 完整阅读 `/workspace/shota_pure_love/正太纯爱色色文/星辰之下.txt`
-  - 提取核心文风要素：萌系词汇库、叠词/拟声词用法、心理描写模式、情感递进节奏、R18前戏描写手法、日常互动萌点、反差萌塑造方式
-  - 记录关键片段示例（每类至少3个）：开篇方式、告白场景、初吻/初夜描写、吃醋场景、日常互动
-  - 输出结构化的星辰风文风提取笔记
-- **Acceptance Criteria Addressed**: [AC-2]
+  - 创建模块目录 `/workspace/Chinese-WebNovel-Skill-2/Chinese-WebNovel-Skill-2/references/modules/shota_pure_love/`
+  - 创建 sources/raw/xingchen/、sources/raw/nianqing/、sources/raw/others/ 三个子目录
+  - 将 `/workspace/shota_pure_love/正太纯爱色色文/星辰之下.txt` 复制到 sources/raw/xingchen/
+  - 将5个年轻房东小房客*.txt复制到 sources/raw/nianqing/
+  - 将剩余所有txt文件复制到 sources/raw/others/（注意宝贝今年十四岁有两个重复文件，都保留）
+  - 验证文件复制完整，目录结构正确
+- **Acceptance Criteria Addressed**: [AC-1]
 - **Test Requirements**:
-  - `programmatic` TR-1.1: 笔记覆盖至少8个文风维度（词汇、对话、心理、节奏、描写、R18、萌点、意象）
-  - `human-judgement` TR-1.2: 每个维度都有原文片段作为示例，片段选择具有代表性
-- **Notes**: 重点关注"星辰"意象的反复使用、"狼与羊"的隐喻、基诺的傲娇心理、辰辰的萌系语言
+  - `programmatic` TR-1.1: 目录结构存在，包含6个.md文件位置和sources/raw/下3个子目录
+  - `programmatic` TR-1.2: sources/raw/xingchen/下有1个文件，sources/raw/nianqing/下有5个文件，sources/raw/others/下有12个文件（含重复）
+- **Notes**: 原始文件保留原文件名，不重命名
 
-## [ ] Task 2: 深度阅读并提取《年轻房东》文风精华
+## [ ] Task 2: 深度阅读并提取星辰风文风精华
 - **Priority**: high
-- **Depends On**: None
+- **Depends On**: [Task 1]
 - **Description**: 
-  - 完整阅读《年轻房东小房客》全5季
-  - 提取核心文风要素：第一人称叙事特点、生活化对话模式、多人物关系处理、R18写实描写尺度、后宫关系平衡、日常→H的自然过渡、角色个性化语言
-  - 记录关键片段示例：第一人称内心吐槽、房东房客初遇、照顾生病场景、多人物互动、H场景的情感铺垫
-  - 输出结构化的房东风文风提取笔记
-- **Acceptance Criteria Addressed**: [AC-2]
+  - 完整阅读 sources/raw/xingchen/星辰之下.txt
+  - 提取星辰风核心文风要素：
+    - 词汇库：萌系词汇、叠词、拟声词、语气词列表及使用频率
+    - 叙事特点：开篇反差（暗黑→温馨）、日常萌点写法、心理描写方式（直白内心独白、傲娇吐槽）
+    - 情感节奏：一见钟情→快速递进→内心挣扎→占有欲vs保护欲
+    - 人物塑造：反差萌（杀手vs温柔）、萌娃语言特点（奶声奶气、撒娇、童言无忌）
+    - 意象系统："星辰"意象的反复使用、"狼与羊"隐喻
+    - R18尺度：肉渣为主、前戏细腻、心理感受优先、最后因保护欲停止的模式
+  - 标记至少15个关键片段位置（行号），用于后续good_examples
+  - 输出结构化提取笔记
+- **Acceptance Criteria Addressed**: [AC-3]
 - **Test Requirements**:
-  - `programmatic` TR-2.1: 笔记覆盖第一人称、对话、人物塑造、R18、后宫关系、日常描写6个维度
-  - `human-judgement` TR-2.2: 准确捕捉到"房东风"的写实感和第一人称吐槽特点，片段示例能体现其风格
-- **Notes**: 注意商仁（房东）的第一人称心理活动与实际行为的反差、小雨的傲娇、小杰的痞气、小迪的成长变化
+  - `programmatic` TR-2.1: 提取笔记覆盖词汇、叙事、情感、人物、意象、R18共6个维度
+  - `human-judgement` TR-2.2: 每个维度有具体特征描述和对应的原文行号标记
+  - `human-judgement` TR-2.3: 准确捕捉到星辰风的二次元萌系轻小说感
+- **Notes**: 重点关注基诺的傲娇心理和辰辰的萌系语言
 
-## [ ] Task 3: 创建 genre_shota_pure_love.md 主体框架（前4章）
+## [ ] Task 3: 深度阅读并提取房东风文风精华
 - **Priority**: high
-- **Depends On**: [Task 1, Task 2]
+- **Depends On**: [Task 1]
 - **Description**: 
-  - 参照 genre_shota_school.md 的7段式结构，创建 genre_shota_pure_love.md
-  - 完成第1-4章：
-    - 第一章：题材定位与核心爽点（纯爱vs堕落的本质区别、两种子风格定位、核心爽点对比）
-    - 第二章：6大叙事范式（星辰风3种+房东风3种，每种含核心设定、关系模式、剧情推进路线、经典桥段）
-    - 第三章：双风格世界观与角色原型库（星辰风世界观2种+角色8个，房东风世界观2种+角色8个）
-    - 第四章：专属R18技法（纯爱向技法，区别于榨精技法，强调温柔、情感交融）
-  - 文件大小控制在30-40KB
-- **Acceptance Criteria Addressed**: [AC-1, AC-2, AC-3]
+  - 完整阅读 sources/raw/nianqing/下所有5个文件
+  - 提取房东风核心文风要素：
+    - 第一人称叙事："我"（商仁）的内心吐槽、表面装正人君子vs内心计划通的反差
+    - 语言特点：生活化对话、不矫情、口语化、人物语言个性化（房东/小雨/小杰/小迪各有特色）
+    - 多人物处理：后宫关系平衡、争宠但不恶毒、和谐共处模式
+    - 日常→H过渡：从照顾生病、补课、做饭等日常场景自然切入，不突兀
+    - R18写法：写实但有情感铺垫、前戏充足、过程详细但不淫秽、符合人物关系
+    - 情节推进：单元剧模式、每章一个小事件、人物逐步加入后宫
+  - 标记至少15个关键片段位置（行号），用于后续good_examples
+  - 输出结构化提取笔记
+- **Acceptance Criteria Addressed**: [AC-3]
 - **Test Requirements**:
-  - `programmatic` TR-3.1: 章节结构完整对齐genre_shota_school.md，前4章无缺失
-  - `human-judgement` TR-3.2: 叙事范式可直接用于创作，角色原型有区分度、有萌点、有攻略路线
-  - `human-judgement` TR-3.3: R18技法符合纯爱定位，与现有writing_guide.md中的榨精技法有明显区别
-- **Notes**: 角色原型要标注"星辰风"或"房东风"，避免混淆
+  - `programmatic` TR-3.1: 提取笔记覆盖第一人称、对话、多人物、日常过渡、R18、情节推进共6个维度
+  - `human-judgement` TR-3.2: 每个维度有具体特征描述和对应的原文行号标记
+  - `human-judgement` TR-3.3: 准确捕捉到房东风的第一人称写实后宫感
+- **Notes**: 重点关注商仁的第一人称心理活动和四个角色的语言差异
 
-## [ ] Task 4: 完成 genre_shota_pure_love.md 后3章并补全
+## [ ] Task 4: 阅读并分类其他小说提取风格特征
 - **Priority**: high
-- **Depends On**: [Task 3]
+- **Depends On**: [Task 1]
 - **Description**: 
-  - 完成第5-7章：
-    - 第五章：经典场景模板（星辰风3个+房东风3个，每个含场景要素、标准流程、关键细节、对话示例）
-    - 第六章：写作技巧与雷点（情感递进节奏、萌点密度、R18尺度把控、常见错误避雷）
-    - 第七章：参考作品索引
-  - 补充前4章中缺少的示例片段
-  - 调整整体内容，确保两种子风格（星辰/房东）占比均衡
-  - 最终文件大小控制在60-80KB
-- **Acceptance Criteria Addressed**: [AC-1, AC-3]
+  - 阅读 sources/raw/others/下所有小说
+  - 将其他小说分为5个子类并提取特征：
+    - 黑暗英雄调教系（少年英雄系列4篇+正义战队+神奇少年）：英雄战败被调教、战衣玷污、权力反转
+    - 日常纯爱系（宝贝今年十四岁+运动裤下的秘密）：伪兄弟/校园日常、情感细腻、尺度适中
+    - 综漫爽文系（[综漫]正太控的世界旅行）：穿越、多世界、后宫、爽文节奏
+    - 黑暗产业系（正太会所）：会所设定、调教、产业黑暗感
+    - 鬼畜极H系（正太滋味）：重口味、触手、尺度极大
+  - 为每个子类标记3-5个典型片段位置
+  - 输出结构化分类笔记
+- **Acceptance Criteria Addressed**: [AC-3]
 - **Test Requirements**:
-  - `programmatic` TR-4.1: 7个章节完整，文件大小60-80KB
-  - `human-judgement` TR-4.2: 场景模板包含完整流程和细节，可直接套用写作
-  - `human-judgement` TR-4.3: 雷点章节明确指出纯爱写作的常见错误，如情感铺垫不足、OOC、尺度失控
-- **Notes**: 写完后通读一遍，确保两种风格不串味
+  - `programmatic` TR-4.1: 5个子类分类清晰，每类包含对应作品列表
+  - `human-judgement` TR-4.2: 每个子类有200字左右的风格特征总结
+  - `human-judgement` TR-4.3: 每个子类有至少2个典型片段标记
+- **Notes**: 其他风格群在tutorial中不需要像星辰/房东那样详细，但要有清晰的特征描述以便用户选择
 
-## [ ] Task 5: 更新 style_codes.md 添加双子文风配置
-- **Priority**: high
-- **Depends On**: [Task 1, Task 2]
-- **Description**: 
-  - 在现有"5种文风切换"表格后，新增"六、正太纯爱双子文风"小节
-  - 添加「星辰风-二次元萌系纯爱」：
-    - 核心特征表格（语言特点、对话占比、描写重点、适用场景、R18尺度）
-    - 详细执行细则（用词偏好：叠词/拟声词/萌系词汇库；心理描写方式；节奏控制；意象使用）
-    - 与现有"萌系轻小说"文风的区别和联系
-  - 添加「房东风-写实甜宠后宫」：
-    - 核心特征表格（第一人称特点、对话占比、描写重点、适用场景、R18尺度）
-    - 详细执行细则（第一人称内心吐槽写法；生活化对话；多人物关系平衡；写实H写法）
-    - 与其他文风的区别
-  - 在"五、风格组合速查表"中添加纯爱题材的推荐组合行
-- **Acceptance Criteria Addressed**: [AC-4, AC-6]
-- **Test Requirements**:
-  - `programmatic` TR-5.1: style_codes.md原有内容完整保留，新内容插入位置正确
-  - `human-judgement` TR-5.2: 两种新风的执行细则具体可操作，包含用词示例和写法指导
-  - `human-judgement` TR-5.3: 风格组合速查表新增条目准确，能指导实际创作
-- **Notes**: 新风不要替换现有文风，而是作为补充的专项文风
-
-## [ ] Task 6: 更新 README.md 添加索引和调用说明
+## [ ] Task 5: 创建 source_index.md
 - **Priority**: medium
-- **Depends On**: [Task 3, Task 4, Task 5]
+- **Depends On**: [Task 1, Task 2, Task 3, Task 4]
 - **Description**: 
-  - 在"文件说明"表格中添加 genre_shota_pure_love.md 条目
-  - 在"调用时机"或"强制执行规则"部分补充纯爱题材的调用流程：先选双子文风→再调用genre_shota_pure_love
-  - 在"建议阅读顺序"中提及纯爱题材的阅读路径
-  - 如需要，在"核心设计哲学"中补充纯爱题材的核心原则（情感优先等）
+  - 列出sources/raw/下所有文件，分三个子目录
+  - 对每个文件标注：
+    - 文件名
+    - 字数/篇幅
+    - 风格分类（星辰风/房东风/其他某子类）
+    - 参考价值定位：主参考/重点参考/补充参考/风格参考
+    - 简短说明（是什么故事、核心看点）
+  - 说明本模块主要依赖哪些资料（星辰之下、年轻房东全系列是主参考）
+  - 标注重复文件（宝贝今年十四岁有两个版本）
+- **Acceptance Criteria Addressed**: [AC-7]
+- **Test Requirements**:
+  - `programmatic` TR-5.1: 所有18个原始文件都在索引中列出
+  - `human-judgement` TR-5.2: 每个文件的参考价值定位准确
+  - `human-judgement` TR-5.3: 明确说明主参考和补充参考的区别
+- **Notes**: 这是第一个要写的.md文件，方便后续写其他文件时引用
+
+## [ ] Task 6: 创建 README.md
+- **Priority**: high
+- **Depends On**: [Task 5]
+- **Description**: 
+  - 参照 modules/opening/README.md 的格式
+  - 包含：
+    - 模块定位：正太纯爱/色色文文风专项模块，解决什么问题
+    - 什么时候调用：列出明确的问题信号（写正太BL、萌系文、第一人称后宫文、需要匹配特定文风等）
+    - 建议阅读顺序
+    - 文件说明表
+  - 对齐现有标准模块的README风格
+- **Acceptance Criteria Addressed**: [AC-2]
+- **Test Requirements**:
+  - `human-judgement` TR-6.1: 调用时机清晰，用户一看就知道什么时候该用这个模块
+  - `human-judgement` TR-6.2: 阅读顺序明确，文件说明准确
+  - `human-judgement` TR-6.3: 格式和语气与opening/README.md一致
+- **Notes**: 简洁明了，不要太长
+
+## [ ] Task 7: 创建 tutorial.md（上半部分：核心框架+星辰风+房东风）
+- **Priority**: high
+- **Depends On**: [Task 2, Task 3, Task 5]
+- **Description**: 
+  - 参照 modules/opening/tutorial.md 的深度和风格
+  - 完成tutorial的前70%：
+    - 一、统一定义：什么是正太纯爱/色色文，它和榨精题材、校园堕落题材的区别
+    - 二、底层通用原则：萌点密度控制、情感vs色情平衡、角色年龄与行为匹配、Show Don't Tell
+    - 三、星辰风（二次元萌系纯爱）详解：
+      - 核心特征表格
+      - 词汇库（萌系词/叠词/拟声词/语气词）
+      - 叙事节奏和开篇写法
+      - 人物塑造要点（反差萌、萌娃语言、傲娇攻）
+      - 心理描写方式
+      - 意象使用（星辰、狼羊隐喻）
+      - R18尺度和写法（肉渣、前戏细腻、保护欲中断）
+    - 四、房东风（第一人称写实后宫）详解：
+      - 核心特征表格
+      - 第一人称写法（内心吐槽、表里反差）
+      - 生活化对话写作
+      - 多人物后宫关系平衡
+      - 日常→H的自然过渡
+      - R18尺度和写法（写实、有铺垫、过程详细）
+  - 大小控制在25-35KB
+- **Acceptance Criteria Addressed**: [AC-3]
+- **Test Requirements**:
+  - `human-judgement` TR-7.1: 统一定义清晰，能区分开本模块和bl_r18_writing的不同定位
+  - `human-judgement` TR-7.2: 星辰风讲解具体可操作，包含词汇列表示例
+  - `human-judgement` TR-7.3: 房东风讲解具体可操作，第一人称写法有明确指导
+  - `human-judgement` TR-7.4: 两种文风差异明显，看完不会混淆
+- **Notes**: 重点放在星辰风和房东风，要写得详细，给出具体的用词和写法指导
+
+## [ ] Task 8: 创建 tutorial.md（下半部分：其他风格群+决策树）
+- **Priority**: medium
+- **Depends On**: [Task 4, Task 7]
+- **Description**: 
+  - 完成tutorial的后30%：
+    - 五、其他风格群概览（5个子类，每个200-300字特征总结+适用场景）：
+      - 黑暗英雄调教系
+      - 日常纯爱系
+      - 综漫爽文系
+      - 黑暗产业系
+      - 鬼畜极H系
+    - 六、文风选择决策树：从题材→大系→具体文风的判断流程
+    - 七、与bl_r18_writing模块配合使用的方法（本模块选文风，bl_r18_writing选技法）
+  - 最终tutorial.md总大小控制在30-50KB
+- **Acceptance Criteria Addressed**: [AC-3, AC-8]
+- **Test Requirements**:
+  - `human-judgement` TR-8.1: 其他风格群每个子类有清晰的特征总结
+  - `human-judgement` TR-8.2: 文风决策树可操作，能一步步引导用户选出合适文风
+  - `human-judgement` TR-8.3: 明确说明与bl_r18_writing的配合方式
+- **Notes**: 其他风格群不需要像星辰/房东那样详细，重点讲清楚区别和适用场景即可
+
+## [ ] Task 9: 创建 good_examples.md
+- **Priority**: high
+- **Depends On**: [Task 2, Task 3, Task 4, Task 5]
+- **Description**: 
+  - 至少20个正例片段
+  - 分组：
+    - 星辰风组：8-10个片段（开篇2个、日常互动2个、情感描写2个、H场景2-4个）
+    - 房东风组：8-10个片段（第一人称叙事2个、对话2个、日常→H过渡2个、H场景2-4个）
+    - 其他风格组：4-6个片段（每个子类至少1个）
+  - 每个片段包含：
+    - 【编号】GE-XX
+    - 【来源】文件名
+    - 【类型】开篇/日常/对话/心理/H场景/告白/吃醋等
+    - 【片段】原文截取（200-500字左右）
+    - 【该学什么】2-3句话说明这个片段好在哪里，应该学习什么结构/用词/节奏
+  - 开头有快速索引表
+  - 所有片段必须来源于原始小说，标注清楚出处
+  - 大小控制在40-60KB
 - **Acceptance Criteria Addressed**: [AC-5]
 - **Test Requirements**:
-  - `programmatic` TR-6.1: 新文件在README中有索引，链接路径正确
-  - `human-judgement` TR-6.2: 调用流程清晰，用户能看懂如何使用新模块
-- **Notes**: 改动要小，不要重写README其他部分
+  - `programmatic` TR-9.1: 正例总数≥20个
+  - `programmatic` TR-9.2: 星辰风≥8个，房东风≥8个，其他≥4个
+  - `human-judgement` TR-9.3: 每个片段的【该学什么】点评准确，能指导写作
+  - `human-judgement` TR-9.4: 片段选择有代表性，覆盖不同场景类型
+- **Notes**: 片段不要太长，200-500字为宜，重点展示写法亮点
 
-## [ ] Task 7: 整体验证与兼容性测试
-- **Priority**: high
-- **Depends On**: [Task 4, Task 5, Task 6]
+## [ ] Task 10: 创建 bad_examples.md
+- **Priority**: medium
+- **Depends On**: [Task 2, Task 3, Task 4, Task 5]
 - **Description**: 
-  - 验证所有文件改动：
-    - genre_shota_pure_love.md结构完整、大小达标、两种风格均衡
-    - style_codes.md新风配置清晰、与现有文风不冲突
-    - README.md索引完整
-  - 进行兼容性检查：确认新genre文件可以和现有技法、节奏、NSFW风格组合使用
-  - 进行试写验证：分别用星辰风和房东风各写一个200字左右的开篇片段，验证风格配置有效
-- **Acceptance Criteria Addressed**: [AC-1, AC-2, AC-4, AC-5, AC-6]
+  - 至少15个反例片段
+  - 按错误类型分组：
+    - OOC错误组（人物行为不符合人设）
+    - 节奏错误组（铺垫不足/进展太快/拖泥带水）
+    - 尺度错误组（纯爱文写得太露骨/黑暗文写得太清水）
+    - 萌点缺失组（正太文没有萌感，像普通BL）
+    - 对话不自然组（正太说大人话/人物语言没有区分度）
+    - 第一人称错误组（房东风写成上帝视角/吐槽过多/吐槽过少）
+  - 每个片段包含：
+    - 【编号】BE-XX
+    - 【错误类型】属于哪一组
+    - 【片段】可以是原文中写得不好的段落，也可以是典型错误的构造（要标注是"原文摘录"还是"典型错误构造"）
+    - 【错在哪里】2-3句话说明问题
+    - 【该怎么改】给一个修改方向或正确示例
+  - 关键错误簇（如萌点缺失、第一人称错误）补充一句"这类通常该补什么"
+  - 大小控制在20-40KB
+- **Acceptance Criteria Addressed**: [AC-6]
 - **Test Requirements**:
-  - `programmatic` TR-7.1: 所有文件存在，genre文件大小在60-80KB
-  - `human-judgement` TR-7.2: 试写片段风格鲜明，星辰风和房东风差异明显，符合原作特征
-  - `human-judgement` TR-7.3: 不与现有模块冲突，可正常组合使用
-- **Notes**: 试写片段不需要很长，能体现风格差异即可
+  - `programmatic` TR-10.1: 反例总数≥15个
+  - `programmatic` TR-10.2: 错误类型至少覆盖5个不同类别
+  - `human-judgement` TR-10.3: 错因分析准确，修改方向可行
+- **Notes**: 如果原文中反例不足，可以构造典型错误，但要标注清楚是构造的
+
+## [ ] Task 11: 创建 runtime.md
+- **Priority**: high
+- **Depends On**: [Task 6, Task 8, Task 9, Task 10]
+- **Description**: 
+  - 参照 module_template.md 对runtime的要求和opening/runtime.md的格式
+  - 包含：
+    - 一、什么时候必须调用本模块（明确的触发信号）
+    - 二、文风诊断流程（第一步做什么、第二步做什么）：
+      - 判断题材（纯爱/后宫/黑暗）
+      - 判断视角（第三人称/第一人称）
+      - 判断目标读者喜欢的风格（萌系/写实/重口）
+      - 匹配到具体文风（星辰风/房东风/其他某子类）
+    - 三、分层分类选素材：选好文风后，去good_examples选2-4个正例，去bad_examples选1-2个要避的坑
+    - 四、动笔前局部计划模板（必须先写这个再动笔）：
+      - 本章用什么文风
+      - 本章核心场景是什么
+      - 本章要表现的萌点/爽点
+      - 尺度把控（肉渣/写实/详细）
+      - 参考哪个正例的结构
+    - 五、不同任务类型的执行流程：
+      - 写开篇：怎么操作
+      - 写日常互动：怎么操作
+      - 写H场景：怎么操作
+      - 改写现有段落：怎么操作
+    - 六、写完后自查清单（10-15项检查点）
+  - 必须是可执行的流程，不是空泛理论
+- **Acceptance Criteria Addressed**: [AC-4]
+- **Test Requirements**:
+  - `human-judgement` TR-11.1: 诊断流程清晰，一步步可操作
+  - `human-judgement` TR-11.2: 局部计划模板具体，用户可以直接填
+  - `human-judgement` TR-11.3: 不同任务类型的执行流程有区分
+  - `human-judgement` TR-11.4: 自查清单实用，能检查出常见问题
+- **Notes**: 这是模块最关键的文件，要写得像操作手册一样，告诉模型"第一步做什么、第二步做什么"
+
+## [ ] Task 12: 整体验证和兼容性测试
+- **Priority**: high
+- **Depends On**: [Task 11]
+- **Description**: 
+  - 文件完整性检查：所有6个.md文件都存在，大小符合预期
+  - 目录结构检查：sources/raw/下文件完整
+  - 交叉引用检查：README/tutorial/runtime中引用的文件名正确
+  - 风格一致性检查：所有.md文件的格式和语气与现有标准模块一致
+  - 兼容性检查：确认本模块和bl_r18_writing不冲突，可以平行调用
+  - 试写验证：
+    - 用星辰风写一个300字左右的日常互动片段
+    - 用房东风写一个300字左右的第一人称片段
+    - 验证两种风格差异明显
+- **Acceptance Criteria Addressed**: [AC-1, AC-2, AC-3, AC-4, AC-5, AC-6, AC-7, AC-8]
+- **Test Requirements**:
+  - `programmatic` TR-12.1: 所有文件存在，大小符合NFR要求
+  - `human-judgement` TR-12.2: 试写片段风格鲜明，星辰风和房东风差异明显
+  - `human-judgement` TR-12.3: 模块整体结构对齐标准模块模板
+- **Notes**: 试写不需要很长，能验证风格配置有效即可

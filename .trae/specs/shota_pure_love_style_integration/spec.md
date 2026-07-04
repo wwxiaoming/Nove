@@ -1,105 +1,162 @@
-# 正太纯爱文风整合 - Product Requirement Document
+# 正太纯爱文风模块 - Product Requirement Document
 
 ## Overview
-- **Summary**: 将《星辰之下》《年轻房东小房客》为代表的正太纯爱文风整合进现有BL/R18写作Skill模块，新增正太纯爱题材专项指南文件和对应文风配置，使Skill能够支持"二次元萌系纯爱"和"写实甜宠后宫"两种正太纯爱风格的写作。
-- **Purpose**: 现有Skill主要覆盖战斗榨精、校园堕落、战队特摄等题材，但缺少纯爱向正太BL的专门指导。本次整合填补这一空白，让AI能够写出符合《星辰之下》（萌系奇幻纯爱）和《年轻房东》（写实后宫甜宠）风格的作品。
-- **Target Users**: 使用Chinese-WebNovel-Skill进行BL/R18正太纯爱题材创作的作者。
+- **Summary**: 在 `/workspace/Chinese-WebNovel-Skill-2/Chinese-WebNovel-Skill-2/references/modules/` 下新建独立的 `shota_pure_love` 专项模块，遵循标准模块结构（README/tutorial/runtime/good_examples/bad_examples/source_index + sources/raw）。将《星辰之下》《年轻房东小房客》及其他11篇正太BL小说作为文风素材，在sources/raw下分三个子目录存放原文：xingchen（星辰之下单独）、nianqing（年轻房东系列单独）、others（其他所有小说）。模块将总结三种主要文风体系：星辰风（二次元萌系奇幻纯爱）、房东风（第一人称写实后宫甜宠）、其他风格群（黑暗英雄调教、日常纯爱、综漫爽文、黑暗产业、鬼畜极H）。
+- **Purpose**: 现有Skill缺少正太纯爱/色色文的专项文风指导。本模块专门解决：1) 如何写出《星辰之下》那样萌系轻小说感的纯爱文；2) 如何写出《年轻房东》那样第一人称写实后宫感的文；3) 如何根据题材选择合适的正太BL文风（从纯爱甜宠到黑暗调教全覆盖）；4) 提供大量正反例让AI能匹配风格，避免写出来千篇一律。
+- **Target Users**: 使用Chinese-WebNovel-Skill进行正太BL/纯爱/色色文创作的作者。
 
 ## Goals
-- 新增 `genre_shota_pure_love.md` 正太纯爱题材专项写作指南，对齐现有genre文件格式（7段式结构）
-- 在 `style_codes.md` 中新增2种正太纯爱文风配置：「星辰风-二次元萌系纯爱」和「房东风-写实甜宠后宫」
-- 更新 `README.md` 添加新文件索引和题材调用路由
-- 提取两部重点作品的核心文风特点：叙事节奏、语言风格、情感描写方式、角色塑造、R18尺度把控
-- 提供完整的叙事范式、角色原型库、经典场景模板、专属技法
+- 在modules下新建独立模块 `shota_pure_love/`，遵循标准模块目录结构
+- 复制所有原始小说到 sources/raw/ 下三个子目录：xingchen、nianqing、others
+- 创建 README.md - 说明模块用途、调用时机、阅读顺序、文件说明
+- 创建 tutorial.md - 系统讲解正太纯爱文的写作框架、三大文风体系对比、每种文风的核心技法
+- 创建 runtime.md - 明确调用规则、风格诊断流程、动笔前局部计划、写作执行步骤、写完自查清单
+- 创建 good_examples.md - 按文风分类整理至少20个正例片段，标注"该学什么"
+- 创建 bad_examples.md - 按错误类型整理至少15个反例片段，标注"错在哪里"
+- 创建 source_index.md - 原始素材索引，说明每篇小说的定位、参考价值、主要/补充/噪音
 
 ## Non-Goals (Out of Scope)
-- 不重写现有其他genre文件
-- 不修改core_principles.md的核心铁则（纯爱题材仍需遵守现有红线）
-- 不创建新的examples素材库文件（纯爱题材的技法直接写入genre文件）
-- 不翻译或整理压缩包内的其他非重点作品（仅参考《星辰之下》《年轻房东》，其他作品可作为补充素材但不做深度分析）
-- 不修改主SKILL.md（README更新已足够）
+- 不修改bl_r18_writing模块内的任何文件（本模块是独立平行的新模块）
+- 不修改主SKILL.md（README.md已足够）
+- 不清洗/修改原始小说文件，原样保留在sources/raw/下
+- 不进行小说文本的全文校对或格式修正
+- 不创建examples_*.md这类bl_r18_writing专属格式的文件（遵循标准模块结构）
+- 不覆盖或修改现有任何模块
 
 ## Background & Context
-- 现有BL/R18模块位于 `/workspace/Chinese-WebNovel-Skill-2/Chinese-WebNovel-Skill-2/references/modules/bl_r18_writing/`
-- 现有8个genre文件：alien_tentacle、female_oriented、hero_monster、japanese、sentai、shota_school、training_auction、xianxia
-- 现有style_codes.md已有"萌系轻小说"文风，但缺少针对纯爱向正太文的精细化配置
-- genre文件统一采用7段式结构：题材定位→叙事范式→世界观/角色库→专属技法→场景模板→写作技巧与雷点→参考作品
-- 素材来源：`/workspace/shota_pure_love/正太纯爱色色文/` 目录下18个txt文件，重点为《星辰之下》（955KB，萌系奇幻纯爱）和《年轻房东小房客》全5季（约600KB，写实后宫甜宠）
+- 标准模块结构参考：module_template.md，所有模块统一包含 README.md、tutorial.md、runtime.md、good_examples.md、bad_examples.md、source_index.md，可选sources/raw/存放原始素材
+- 现有参考模块：opening/、dialogue/、milking_techniques/等都遵循此结构
+- 素材来源：`/workspace/shota_pure_love/正太纯爱色色文/` 共18个文件，去重后17篇作品：
+  - xingchen子目录（1篇）：星辰之下.txt（955KB，萌系奇幻纯爱，代表"星辰风"）
+  - nianqing子目录（5篇）：年轻房东小房客全5季（约600KB，第一人称写实后宫甜宠，代表"房东风"）
+  - others子目录（11篇，去重后10篇）：
+    - 少年英雄系列4篇（moecloud）：黑暗英雄陷落调教系
+    - 正义战队by落雪冰痕：战队英雄调教
+    - 神奇少年【长篇完结】：超能力少年调教
+    - 宝贝今年十四岁：伪兄弟日常纯爱
+    - 运动裤下的秘密：校园日常纯爱
+    - [综漫]正太控的世界旅行：综漫穿越爽文后宫
+    - 正太会所：黑暗产业设定系
+    - 正太滋味BY奴玉：鬼畜触手极H系
 
 ## Functional Requirements
-- **FR-1**: 创建 `genre_shota_pure_love.md`，包含：
-  - 题材定位与核心爽点（区分纯爱vs堕落的核心差异：情感优先、双向奔赴、日常萌点、保护欲vs占有欲）
-  - 6大叙事范式（星辰风3种：杀手正太×萌娃、守护者×小太阳、暗黑过去×光明救赎；房东风3种：房东×房客、温柔攻×傲娇受、多人物后宫日常）
-  - 双风格角色原型库（星辰风4攻4受、房东风3攻5受，含性格特征、萌点、堕落/攻略路线、典型台词）
-  - 专属R18技法（纯爱向寸止、初夜温柔写法、情感交融技法、日常萌系H写法）
-  - 经典场景模板（星辰风3种：星空下告白、病床照顾、初夜；房东风3种：深夜照顾生病房客、浴室共浴、后宫多人日常）
-  - 写作技巧与雷点（情感递进节奏、萌点密度控制、R18尺度把控、纯爱vs色情平衡）
-  - 参考作品索引
-- **FR-2**: 更新 `style_codes.md`，在"5种文风切换"表格后新增"正太纯爱双子文风"小节：
-  - 星辰风（二次元萌系纯爱）：详细执行细则、用词偏好、拟声词/叠词库、心理描写方式、节奏控制
-  - 房东风（写实甜宠后宫）：详细执行细则、第一人称写法、对话生活化、多人物关系处理、R18尺度
-- **FR-3**: 更新 `README.md`：
-  - 在文件说明表中添加genre_shota_pure_love.md
-  - 在调用时机部分补充纯爱题材的调用流程
-  - 在风格组合速查表中添加纯爱题材推荐组合
+- **FR-1**: 创建模块目录结构
+  - `/workspace/Chinese-WebNovel-Skill-2/Chinese-WebNovel-Skill-2/references/modules/shota_pure_love/`
+  - 下含：README.md、tutorial.md、runtime.md、good_examples.md、bad_examples.md、source_index.md
+  - 下含：sources/raw/xingchen/、sources/raw/nianqing/、sources/raw/others/
+  - 将所有txt原始文件按分类复制到对应子目录
+
+- **FR-2**: 创建 README.md
+  - 明确模块解决什么问题（正太BL文风选择、萌系/写实/黑暗等风格写法）
+  - 明确什么时候调用（写正太BL、纯爱甜宠、萌系文、第一人称后宫文、黑暗调教文时）
+  - 建议阅读顺序
+  - 文件说明表
+
+- **FR-3**: 创建 tutorial.md（核心教程）
+  - 统一定义：什么是正太纯爱/色色文，它和其他BL题材的区别
+  - 三大文风体系详解：
+    - 星辰风（二次元萌系纯爱）：核心特征、词汇库、叙事节奏、心理描写、R18尺度、意象使用（星辰/狼羊隐喻）
+    - 房东风（第一人称写实后宫）：核心特征、第一人称吐槽写法、生活化对话、多人物平衡、R18写实尺度
+    - 其他风格群：分5个子类讲解（黑暗英雄调教、日常纯爱、综漫爽文、黑暗产业、鬼畜极H）
+  - 底层原则：正太BL写作的通用原则（萌点密度、情感vs色情平衡、角色年龄与行为匹配）
+  - 文风选择决策树：什么题材选什么文风
+
+- **FR-4**: 创建 runtime.md（执行入口）
+  - 什么时候必须调用本模块
+  - 文风诊断流程：根据用户需求/题材判断该用哪种文风
+  - 分层分类：先选大系（纯爱/后宫/黑暗）→再选具体文风
+  - 正反例匹配规则
+  - 动笔前局部计划模板（必须先写计划再动笔）
+  - 不同任务类型的处理方式（写开篇、写H场景、写日常互动、改写现有段落）
+  - 写完后自查清单
+
+- **FR-5**: 创建 good_examples.md
+  - 至少20个正例片段
+  - 按文风分组：星辰风组、房东风组、其他风格组
+  - 每条正例标注：来源作品、片段类型（开篇/日常/H场景/告白/吃醋等）、该学什么（结构/用词/节奏/心理描写等）
+  - 开头提供快速索引表
+
+- **FR-6**: 创建 bad_examples.md
+  - 至少15个反例片段（可从原文中选取写得不好的段落，或构造典型错误）
+  - 按错误类型分组：OOC错误、节奏错误、尺度错误、萌点缺失错误、对话不自然错误等
+  - 每条反例标注：错在哪里、为什么错、该怎么改
+  - 关键错误簇补充"这类通常该补什么"
+
+- **FR-7**: 创建 source_index.md
+  - 列出sources/raw/下所有文件
+  - 标注每个文件的定位：主参考/补充参考/风格参考/噪音较大
+  - 明确说明本模块主要依赖了哪些资料
+  - 标注重复文件（如宝贝今年十四岁有两个版本）
 
 ## Non-Functional Requirements
-- **NFR-1**: genre_shota_pure_love.md文件大小控制在60-80KB，与其他genre文件相当
-- **NFR-2**: 文风特征提取必须基于《星辰之下》《年轻房东》实际文本，包含具体片段示例作为佐证
-- **NFR-3**: 严格对齐现有genre文件的7段式结构和markdown格式
-- **NFR-4**: 纯爱题材必须强调"情感优先"原则，H场景为情感服务，而非为H而H
-- **NFR-5**: 两种子风格（星辰风/房东风）必须有明确的区分度，不能混淆
+- **NFR-1**: 所有.md文件遵循标准模块格式，markdown排版清晰
+- **NFR-2**: good_examples和bad_examples中的片段必须来源于原始小说，不能凭空编造
+- **NFR-3**: 文风总结必须准确，要让人看完就能区分出星辰风和房东风的差异
+- **NFR-4**: runtime.md必须是可执行的流程，不是空泛理论，要给出明确的"先做什么再做什么"
+- **NFR-5**: 保留原始小说文件在sources/raw/下，不做修改
+- **NFR-6**: 文件大小：tutorial.md 30-50KB，good_examples.md 40-60KB，bad_examples.md 20-40KB，其他文件5-20KB
 
 ## Constraints
-- **Technical**: 必须使用纯markdown格式，与现有文件风格一致；文件路径必须在bl_r18_writing目录下
-- **Business**: 必须遵守现有core_principles.md的所有硬性禁令；R18描写必须符合纯爱风格的尺度（星辰风偏肉渣、房东风可写实但仍需情感铺垫）
-- **Dependencies**: 依赖现有style_codes.md和README.md的结构；参考素材位于/workspace/shota_pure_love/正太纯爱色色文/
+- **Technical**: 必须严格遵循module_template.md规定的文件结构和命名
+- **Business**: 必须遵守现有core_principles.md（bl_r18_writing模块）的所有硬性禁令和内容红线
+- **Dependencies**: 原始素材在/workspace/shota_pure_love/正太纯爱色色文/，标准模块模板参考modules/module_template.md
 
 ## Assumptions
-- 现有genre文件的7段式结构是最佳实践，新增文件应严格遵循
-- 《星辰之下》和《年轻房东》分别代表了正太纯爱文的两种典型风格，足以覆盖大部分纯爱向写作需求
-- 不需要修改core_principles.md，因为纯爱题材不涉及新的红线问题
-- 压缩包内其他作品（如《宝贝今年十四岁》《少年英雄》等）可作为补充参考，但重点分析两部指定作品即可
+- module_template.md的结构是所有模块必须遵守的标准
+- 三大文风分类（星辰风、房东风、其他风格群）足以覆盖用户的正太BL写作需求
+- 原始小说文件原样保留在sources/raw/下即可，不需要清洗格式
+- 本模块是文风指导模块，与bl_r18_writing（榨精技法模块）是平行互补关系，不是替代关系
 
 ## Acceptance Criteria
 
-### AC-1: genre_shota_pure_love.md 文件完整性
-- **Given**: 文件已创建
-- **When**: 检查文件结构和内容
-- **Then**: 文件包含完整的7个章节，对齐其他genre文件格式，文件大小在60-80KB之间
+### AC-1: 目录结构完整
+- **Given**: 模块创建完成
+- **When**: 查看shota_pure_love目录
+- **Then**: 包含所有6个标准.md文件 + sources/raw/下3个子目录，所有原始小说已复制到对应子目录
 - **Verification**: `programmatic`
-- **Notes**: 章节顺序与genre_shota_school.md一致
 
-### AC-2: 双文风特征提取准确性
-- **Given**: 文风配置已写入
-- **When**: 审查文风描写和示例
-- **Then**: 星辰风特征（萌系、奇幻、轻小说感、肉渣尺度、情感细腻）和房东风特征（写实、第一人称、多人物、后宫、尺度更大但情感铺垫）有明确区分，每个特征都有文本片段支撑
-- **Verification**: `human-judgment`
-
-### AC-3: 叙事范式和角色原型实用性
-- **Given**: 叙事范式和角色库已完成
-- **When**: 按照范式和原型进行试写
-- **Then**: 可以直接使用提供的范式和原型写出符合两种风格的开篇和H场景，角色行为符合人设
-- **Verification**: `human-judgment`
-
-### AC-4: style_codes.md 文风配置可执行
-- **Given**: style_codes.md已更新
-- **When**: 按照新增的文风配置写作
-- **Then**: 可以根据"星辰风"或"房东风"配置写出风格鲜明的段落，两种风格差异明显
-- **Verification**: `human-judgment`
-
-### AC-5: README.md 索引完整
-- **Given**: README.md已更新
+### AC-2: README.md符合标准
+- **Given**: README.md已创建
 - **When**: 阅读README
-- **Then**: 新文件在文件说明表中列出，调用流程清晰，风格速查表包含纯爱题材组合
+- **Then**: 清晰说明模块用途、调用时机、阅读顺序、文件说明，对齐opening/README.md的格式
+- **Verification**: `human-judgment`
+
+### AC-3: tutorial.md文风总结准确
+- **Given**: tutorial.md已创建
+- **When**: 审查三大文风体系的讲解
+- **Then**: 星辰风和房东风有明确区分，每个文风都有具体特征、用词示例、片段佐证；其他风格群分类清晰
+- **Verification**: `human-judgment`
+
+### AC-4: runtime.md可执行
+- **Given**: runtime.md已创建
+- **When**: 按照runtime流程执行
+- **Then**: 可以根据用户需求完成"诊断文风→选正例反例→写局部计划→写作→自查"的完整流程，步骤明确可操作
+- **Verification**: `human-judgment`
+
+### AC-5: good_examples.md质量
+- **Given**: good_examples.md已创建
+- **When**: 检查正例
+- **Then**: 至少20个正例，按文风分组，每条都标注"该学什么"，片段来源于原始小说
+- **Verification**: `programmatic` + `human-judgment`
+
+### AC-6: bad_examples.md质量
+- **Given**: bad_examples.md已创建
+- **When**: 检查反例
+- **Then**: 至少15个反例，按错误类型分组，每条都标注"错在哪里"和改进方向
+- **Verification**: `programmatic` + `human-judgment`
+
+### AC-7: source_index.md索引完整
+- **Given**: source_index.md已创建
+- **When**: 检查索引
+- **Then**: 所有原始文件都有记录，标注了主参考/补充参考/重复文件等信息
 - **Verification**: `programmatic`
 
-### AC-6: 与现有模块兼容性
-- **Given**: 所有文件已更新
-- **When**: 与现有genre文件和核心文件配合使用
-- **Then**: 不与现有8个genre文件冲突，可以和现有技法、节奏模式、NSFW风格组合使用
+### AC-8: 与现有模块兼容
+- **Given**: 模块创建完成
+- **When**: 与现有模块（特别是bl_r18_writing）配合使用
+- **Then**: 不冲突，可以平行调用，文风模块负责风格选择，技法模块负责具体R18技法
 - **Verification**: `human-judgment`
 
 ## Open Questions
-- [ ] 是否需要为纯爱题材新增专属的NSFW风格（如"纯爱温柔风"），还是复用现有的感官刺激流并在技法中强调差异？
-- [ ] 其他作品（如《宝贝今年十四岁》《正太会所》等）是否需要提取额外的范式补充进genre文件？
+- [ ] 其他风格群中的5个子类（黑暗英雄/日常纯爱/综漫/会所/鬼畜）是否需要在tutorial中同等详细讲解，还是只做概要介绍、重点放在星辰和房东上？
+- [ ] sources/raw/下的文件是否需要重命名为编号格式（如1.txt、2.txt），还是保留原文件名？
